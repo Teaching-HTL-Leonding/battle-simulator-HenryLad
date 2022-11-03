@@ -3,14 +3,14 @@ int Player1 = int.Parse(Console.ReadLine()!);
 Console.WriteLine("Player 2 please choose your Character");
 int Player2 = int.Parse(Console.ReadLine()!);
 
- int Player1Speed = 0;
- int Player1Attack = 0;
- int Player2Speed = 0;
- int Player2Attack = 0;
+ double Player1Speed = 0;
+ double Player1Attack = 0;
+ double Player2Speed = 0;
+ double Player2Attack = 0;
 
 
-int Player1Health = 0;
-int Player2Health = 0;
+double Player1Health = 0;
+double Player2Health = 0;
 if (Player1 == Player2){
     Console.WriteLine("It is a draw please try again");
 }
@@ -66,26 +66,38 @@ switch(Player2){
         Player2Health = 22;
         break;
      case 4:
-    Player2Speed = 10;
-    Player2Attack = 1;
-    Player2Health = 16;
-    break;
+        Player2Speed = 10;
+        Player2Attack = 1;
+        Player2Health = 16;
+        break;
     case 5:
-    Player2Speed = 3;
-    Player2Attack = 4;
-    Player2Health = 18;
-    break;
+        Player2Speed = 3;
+        Player2Attack = 4;
+        Player2Health = 18;
+        break;
     case 6:
-    Player2Speed = 3;
-    Player2Attack = 1;
-    Player2Health = 18;
+        Player2Speed = 3;
+        Player2Attack = 1;
+        Player2Health = 18;
     break;
 }
 
 
+
+
 while(Player1Health > 0 && Player2Health > 0){
-    Player2Health -= (Player1Attack * Player1Speed);
-    Player1Health -= (Player2Attack * Player2Speed);
+    int number1 = Random.Shared.Next(-15, 15);
+    double damage = number1 / 100d;
+    double prozent1 = (Player1Attack * Player1Speed) * damage;
+    int number2 = Random.Shared.Next(-15, 15);
+    double damage2  = number2 / 100d;
+    double prozent2 = (Player2Attack * Player2Speed) * damage2;
+    Player2Health -= prozent2;
+    Player1Health -= prozent1;
+    //Console.WriteLine(Player1Health);
+    //Console.WriteLine(Player2Health);
+   
+   
     
 }
 if (Player1Health > 0){
